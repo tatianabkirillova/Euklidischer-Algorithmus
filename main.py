@@ -4,8 +4,8 @@ n = 0
 
 
 def print_gcd(a, b, r):
-    print("gcd(" + str(n) + "," + str(m) + ") = (" + str(a[steps - 1]) + "*"
-          + str(n) + ") + (" + str(b[steps - 1]) + "*" + str(m) + ")" + " = " + str(r[steps - 1]))
+    print("\ngcd(" + str(m) + "," + str(n) + ") = (" + str(a[steps - 1]) + "*"
+          + str(m) + ") + (" + str(b[steps - 1]) + "*" + str(n) + ")" + " = " + str(r[steps - 1]))
 
 
 def print_index(i):
@@ -33,6 +33,7 @@ def print_table(a, b, r, q):
 
     print_gcd(a, b, r)
 
+
 def get_items():
     a = [0, 1]
     b = [1, 0]
@@ -45,16 +46,26 @@ def get_items():
     print_table(a, b, r, q)
 
 
+def switch():
+    global m
+    global n
+    t = m
+    m = n
+    n = t
+
+
 def scan(r, q):
     global m
     global n
     m = input('m = ')
     n = input('n = ')
+    if m > n:
+        switch()
 
-    r.append(m)
     r.append(n)
-    q.append(m)
+    r.append(m)
     q.append(n)
+    q.append(m)
 
 
 def iteration_a_b(a, q):
@@ -84,4 +95,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
