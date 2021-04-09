@@ -57,8 +57,8 @@ def switch():
 def scan(r, q):
     global m
     global n
-    m = input('m = ')
-    n = input('n = ')
+    m = int(input('m = '))
+    n = int(input('n = '))
     if m > n:
         switch()
 
@@ -81,8 +81,8 @@ def iteration_r_q(r, q):
     while True:
         rest_i = r[i] % r[i + 1]
         quotient_i = r[i] / r[i + 1]
-        r.append(rest_i)
-        q.append(quotient_i)
+        r.append(int(rest_i))
+        q.append(int(quotient_i))
         i += 1
         if rest_i == 0:
             break
