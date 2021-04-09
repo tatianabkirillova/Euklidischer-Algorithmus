@@ -1,4 +1,11 @@
 steps = 0
+m = 0
+n = 0
+
+
+def print_gcd(a, b, r):
+    print("gcd(" + str(n) + "," + str(m) + ") = (" + str(a[steps - 1]) + "*"
+          + str(n) + ") + (" + str(b[steps - 1]) + "*" + str(m) + ")" + " = " + str(r[steps - 1]))
 
 
 def print_index(i):
@@ -24,22 +31,23 @@ def print_table(a, b, r, q):
         print(line)
         i += 1
 
+    print_gcd(a, b, r)
 
 def get_items():
     a = [0, 1]
     b = [1, 0]
     r = []
     q = []
-    m = 0
-    n = 0
-    scan(m, n, r, q)
-    iteration_r_q(m, n, r, q)
+    scan(r, q)
+    iteration_r_q(r, q)
     iteration_a_b(a, q)
     iteration_a_b(b, q)
     print_table(a, b, r, q)
 
 
-def scan(m, n, r, q):
+def scan(r, q):
+    global m
+    global n
     m = input('m = ')
     n = input('n = ')
 
@@ -50,12 +58,12 @@ def scan(m, n, r, q):
 
 
 def iteration_a_b(a, q):
-    for j in range(1, steps):
+    for j in range(1, steps - 1):
         new_a = a[j - 1] - q[j+1] * a[j]
         a.append(new_a)
 
 
-def iteration_r_q(m, n, r, q):
+def iteration_r_q(r, q):
     global steps
     i = 0
 
@@ -67,16 +75,13 @@ def iteration_r_q(m, n, r, q):
         i += 1
         if rest_i == 0:
             break
-    steps = len(q) - 2
+    steps = len(q) - 1
 
 
 def main():
     get_items()
 
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     main()
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
-# Euklidischer-Algorithmus
